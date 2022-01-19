@@ -7,15 +7,27 @@ namespace malden2023_data_encoding_in_c_
         static void Main(string[] args)
         {
             Cipher cipher;
-            cipher = new Cipher(5);
 
-            string encrypted;
-            encrypted = cipher.Encrypt("rosebud");
-            Console.WriteLine($"The encrypted message is: '{encrypted}'");
+    
+            string filePath = args[0];
+            // Console.WriteLine($"Loading '{filePath}'.");
+            string message;
+            message = System.IO.File.ReadAllText(filePath);
+            Console.WriteLine($"The encrypted message is: '{message}'");
 
-            string decrypted;
-            decrypted = cipher.Decrypt(encrypted);
-            Console.WriteLine($"The decrypted message is: '{decrypted}'");
+            
+            int shift;
+            shift = 1;
+            
+            while (shift <=10)
+            {
+            cipher = new Cipher(shift);
+            message = cipher.Decrypt(message);
+            Console.WriteLine($"Shift {shift}: {message}");
+            shift = shift + 1;
+            }
+
+            
         }
     }
 }
