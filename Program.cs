@@ -6,7 +6,7 @@ namespace malden2023_data_encoding_in_c_
     {
         static void Main(string[] args)
         {
-            Cipher cipher;
+            
 
     
             string filePath = args[0];
@@ -21,9 +21,11 @@ namespace malden2023_data_encoding_in_c_
             
             while (shift <=10)
             {
+            Cipher cipher;
             cipher = new Cipher(shift);
-            message = cipher.Decrypt(message);
-            Console.WriteLine($"Shift {shift}: {message}");
+            string final;
+            final = cipher.Decrypt(message);
+            Console.WriteLine($"Shift {shift}: {final}");
             shift = shift + 1;
             }
 
